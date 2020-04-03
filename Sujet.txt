@@ -1,0 +1,11 @@
+Sujet:
+Créer une page web sur laquelle en sélectionnant un groupe on puisse voir la liste des membres du groupe.
+Les groupes seront dans une dropdown et les membres seront visible dans un tableau.
+
+On devra voir le nom et prenom des membres du groupe.
+et la date de creation
+
+Il faut créer 3 tables:
+1 table pour les groupes.
+1 table pour les membres.
+1 table de liaison.

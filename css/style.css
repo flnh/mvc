@@ -1,5 +1,25 @@
-table, td, tr, th {
-  border: 1px solid black;
-  border-collapse: collapse;
+h1{
+    text-align: center;
 }
-/*# sourceMappingURL=style.css.map */
+
+.row{
+    display: flex;
+    justify-content: space-around;
+}
+.col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 250px;
+    background-color: pink;
+}
+
+
+table,
+th,
+td{
+    margin: auto;
+    border : 1px solid black;
+}

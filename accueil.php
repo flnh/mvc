@@ -8,7 +8,6 @@
 </head>
 <body>
     <?php
-        require "functions/connection.php";
         require "functions/select.php";
         require "functions/membre_du_groupe.php";
     ?>

@@ -5,11 +5,25 @@ class Musicien {
   private $_groupeCible;
   private $_dateCreation;
 
-  public function __construct($nom, $prenom, $groupeCible) {
-    $this->setNom($nom);
-    $this->setPrenom($prenom);
-    $this->setGroupeCible($groupeCible);
-    $this->setDateCreation();
+  // public function __construct($nom, $prenom, $groupeCible) {
+  //   $this->setNom($nom);
+  //   $this->setPrenom($prenom);
+  //   $this->setGroupeCible($groupeCible);
+  //   $this->setDateCreation();
+  // }
+
+  public function __construct(array $donnees) {
+    $this->hydrate($donnees);
+  }
+
+  public function hydrate(array $donnees) {
+    foreach ($donnees as $key => $value) {
+      $methode = 'set' . ucfirst($key);
+
+      if (method_exists($this, $methode)) {
+        $this->$methode($value);
+      }
+    }
   }
 
   public function getNom() {
@@ -46,6 +60,4 @@ class Musicien {
     $this->_dateCreation = date('Y-m-d h:i');
   }
 }
-$test = new Musicien('testi', 'testa', '18');
-var_dump($test);
 ?>

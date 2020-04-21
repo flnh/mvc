@@ -8,7 +8,6 @@
 </head>
 <body>
     <?php
-        require "functions/select.php";
         require "functions/membre_du_groupe.php";
     ?>
     <h1>Chez Paulette</h1>
@@ -18,7 +17,7 @@
                 <label for="liste_groupe">Liste des groupes</label>
                 <select name="liste_groupe" id="liste_groupe">
                 <?php  
-                    select_item('liste_groupes', 'id_groupe', 'nom_groupe');
+                require './controllers/listeGroupeController.php';
                 ?>
                 </select>
                 <button type="submit">Voir</button>

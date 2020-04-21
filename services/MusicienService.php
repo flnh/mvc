@@ -4,6 +4,7 @@ require_once './models/Musicien.php';
 
 class MusicienService extends Connection {
   public function getListeMusiciensGroupe($id) {
+    $tabMusiciens = [];
     $requete = $this->bdd->prepare(
       "SELECT 
       lm.nom_musicien as nom,lm.prenom_musicien as prenom, lg.nom_groupe as groupeCible,lglm.created as dateCreation

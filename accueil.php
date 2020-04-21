@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <?php
-        require "functions/membre_du_groupe.php";
-    ?>
     <h1>Chez Paulette</h1>
     <div class= "row">
         <div class="col">
@@ -26,7 +23,7 @@
         <div class="col">
             <?php 
             if(isset($_GET['liste_groupe'])){
-                membre_Groupe($_GET['liste_groupe']);
+              require './controllers/listeMusiciensController.php';
             }
             ?>
         </div>

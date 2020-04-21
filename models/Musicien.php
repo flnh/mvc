@@ -1,5 +1,6 @@
 <?php
 class Musicien {
+  private $_id;
   private $_nom;
   private $_prenom;
   private $_groupeCible;
@@ -23,6 +24,16 @@ class Musicien {
       if (method_exists($this, $methode)) {
         $this->$methode($value);
       }
+    }
+  }
+
+  public function getId() {
+    return $this->_prenom;
+  }
+  public function setId($id) {
+    $id = (int)$id;
+    if ($id > 0) {
+      $this->_id = $id;
     }
   }
 

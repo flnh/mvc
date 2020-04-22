@@ -6,7 +6,7 @@ function afficherListeGroupesSelect(array $listeGroupes) {
   <?php
   for ($i=0; $i < count($listeGroupes); $i++) {
     $selected = "";
-    if (isset($_GET['liste_groupe']) && $_GET['liste_groupe'] == $i + 1) {
+    if (isset($_GET['liste_groupe']) && $_GET['liste_groupe'] == $listeGroupes[$i]->getId_groupe()) {
       $selected = "selected";
     }
     ?>

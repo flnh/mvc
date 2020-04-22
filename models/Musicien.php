@@ -67,8 +67,8 @@ class Musicien {
   public function getDateCreation() {
     return $this->_dateCreation;
   }
-  public function setDateCreation() {
-    $this->_dateCreation = date('Y-m-d h:i');
+  public function setDateCreation($value) {
+    $this->_dateCreation = $value;
   }
 }
 ?>

@@ -51,11 +51,11 @@ class GroupeService extends Connection {
     $id = (int)$id;
     if (!empty($nomGroupe) && $id > 0) {
       $requete = $this->bdd->prepare('UPDATE liste_groupes SET nom_groupe = :nomGroupe WHERE id_groupe = :id');
-      $resultat = $requete->execute([
+      $requete->execute([
         'nomGroupe' => $nomGroupe,
         'id' => $id
       ]);
-      if ($resultat) {
+      if ($requete->rowCount() != 0) {
         return 'Le groupe a bien ete mis a jour';
       } else {
         return 'Probleme de mise a jour';

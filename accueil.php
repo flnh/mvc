@@ -24,10 +24,18 @@
             ?>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            
-        </div>
-    </div>
+    <?php
+        if (isset($_GET['ajouter'])) {
+            require './views/formAjoutUtilisateur.php';
+        } else {
+            ?>
+            <div class="row">
+                <div class="col">
+                    <p><a href="?ajouter=true">Ajouter un Musicien</a></p>
+                </div>
+            </div>
+            <?php
+        }
+    ?>
 </body>
 </html>

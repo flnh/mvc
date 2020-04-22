@@ -76,5 +76,58 @@ class MusicienService extends Connection {
       return []; // Id inférieur à 0
     }
   }
+
+  public function createMusicien($nom, $prenom) {
+    if (!empty($nom) && !empty($prenom) && !preg_match('~[0-9]~', $nom) && !preg_match('~[0-9]~', $prenom)) {
+      $requete = $this->bdd->prepare('INSERT INTO liste_musiciens(nom_musicien, prenom_musicien) VALUES(:nom, :prenom)');
+      $idNouveauMusicien = $requete->execute([
+        'nom' => htmlspecialchars($nom),
+        'prenom' => htmlspecialchars($prenom)
+      ]);
+      if (!$idNouveauMusicien) {
+        return $this->bdd->lastInsertId(); // id d'insertion
+      } else {
+        return 'Probleme lors de la creation du musicien';
+      }
+    } else {
+      return 'Le nom ou prenom ne doit pas etre vide et ne pas contenir de numero';
+    }
+  }
+
+  public function updateMusicien($id, $nom, $prenom) {
+    $id = (int)$id;
+    if (!empty($nom) && !empty($prenom) && !preg_match('~[0-9]~', $nom) && !preg_match('~[0-9]~', $prenom) && $id > 0) {
+      $requete = $this->bdd->prepare('UPDATE liste_musiciens SET nom_musicien = :nom, prenom_musicien = :prenom WHERE id_musicien = :id');
+      $requete->execute([
+        'nom' => htmlspecialchars($nom),
+        'prenom' => htmlspecialchars($prenom),
+        'id' => $id
+      ]);
+      if ($requete->rowCount() != 0) {
+        return 'Le musicien à bien été modifier';
+      } else {
+        return 'Probleme lors de la modification dans la bdd';
+      }
+    } else {
+      return 'Le nom ou prenom ne doit pas etre vide et ne pas contenir de numero et id > 0';
+    }
+  }
+
+  public function deleteMusicien($id) {
+    $id = (int)$id;
+    if ($id > 0) {
+      $requete = $this->bdd->prepare('DELETE FROM liste_musiciens WHERE id_musicien = :id');
+      $requete->execute([
+        'id' => $id
+      ]);
+      if ($requete->rowCount() != 0) {
+        return 'Le musicien à bien été supprimer';
+      } else {
+        return 'Probleme lors de la suppression du musicien';
+      }
+    } else {
+      return 'Mauvais id';
+    }
+  }
 }
 ?>

@@ -1,7 +1,6 @@
 <?php
 function afficherListeGroupesSelect(array $listeGroupes) {
   ?>
-  <label for="liste_groupe">Liste des groupes</label>
   <select name="liste_groupe" id="liste_groupe">
   <?php
   for ($i=0; $i < count($listeGroupes); $i++) {
@@ -15,7 +14,6 @@ function afficherListeGroupesSelect(array $listeGroupes) {
   }
   ?>
   </select>
-  <button type="submit">Voir</button>
   <?php
 }
 ?>

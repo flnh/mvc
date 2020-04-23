@@ -11,9 +11,11 @@
     <div class= "row">
         <div class="col">
             <form action="accueil.php" method="GET">
+                <label for="liste_groupe">Liste des groupes</label>
                 <?php  
                 require './controllers/listeGroupeSelectController.php';
                 ?>
+                <button type="submit">Voir</button>
             </form>
         </div>
         <div class="col">

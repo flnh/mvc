@@ -7,10 +7,11 @@
       <label for="prenom">Prenom</label>
       <input type="text" id="prenom" name="prenom">
       <br>
+      <label for="liste_groupe">Ajouter au groupe: </label>
       <?php
       require './controllers/listeGroupeSelectController.php';
       ?>
-      <button type="submit">Envoyer</button>
+      <button type="submit">Ajouter</button>
     </form>
     <p><a href="./accueil.php">Fermer</a></p>
   </div>

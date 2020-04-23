@@ -1,6 +1,6 @@
 <?php
-require_once './services/Connection.php';
-require_once './models/Groupe.php';
+require_once '../services/Connection.php';
+require_once '../models/Groupe.php';
 
 class GroupeService extends Connection {
   public function getListeGroupes() {

@@ -1,6 +1,6 @@
 <?php
-require_once './services/MusicienService.php';
-require_once './services/LiaisonService.php';
+require_once '../services/MusicienService.php';
+require_once '../services/LiaisonService.php';
 /*
 1- createMusicien($nom, $prenom): ID<$musicienId>
 SI OK

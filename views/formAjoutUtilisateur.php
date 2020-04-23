@@ -9,7 +9,7 @@
       <br>
       <label for="liste_groupe">Ajouter au groupe: </label>
       <?php
-      require './controllers/listeGroupeSelectController.php';
+      require '../controllers/listeGroupeSelectController.php';
       ?>
       <button type="submit">Ajouter</button>
     </form>

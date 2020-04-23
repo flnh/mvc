@@ -1,6 +1,6 @@
 <?php
-require_once './services/connection.php';
-require_once './models/Musicien.php';
+require_once '../services/connection.php';
+require_once '../models/Musicien.php';
 
 class MusicienService extends Connection {
   public function getListeMusiciensGroupe($id) {

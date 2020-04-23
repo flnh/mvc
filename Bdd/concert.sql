@@ -2,10 +2,10 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3308
--- Généré le :  ven. 03 avr. 2020 à 16:05
--- Version du serveur :  8.0.18
--- Version de PHP :  7.3.12
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  jeu. 23 avr. 2020 à 15:11
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.4.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `liste_groupes`;
 CREATE TABLE IF NOT EXISTS `liste_groupes` (
   `id_groupe` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_groupe` varchar(255) NOT NULL,
+  `nom_groupe` varchar(255) COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`id_groupe`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
@@ -55,8 +55,8 @@ CREATE TABLE IF NOT EXISTS `liste_groupes_avec_liste_musiciens` (
   `musicien_id` int(11) NOT NULL,
   `groupe_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
-  `updated` datetime NOT NULL,
-  `del` tinyint(1) NOT NULL,
+  `updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `del` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_jointure`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
@@ -81,8 +81,8 @@ INSERT INTO `liste_groupes_avec_liste_musiciens` (`id_jointure`, `musicien_id`, 
 DROP TABLE IF EXISTS `liste_musiciens`;
 CREATE TABLE IF NOT EXISTS `liste_musiciens` (
   `id_musicien` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_musicien` varchar(255) NOT NULL,
-  `prenom_musicien` varchar(255) NOT NULL,
+  `nom_musicien` varchar(255) COLLATE utf8mb4_bin NOT NULL,
+  `prenom_musicien` varchar(255) COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`id_musicien`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 

@@ -39,5 +39,10 @@
             <?php
         }
     ?>
+    <?php
+        if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['liste_groupe'])) {
+            require './controllers/ajoutUtilisateurController.php';
+        }
+    ?>
 </body>
 </html>

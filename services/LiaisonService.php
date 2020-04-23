@@ -1,6 +1,6 @@
 <?php
-require_once '../services/Connection.php';
-require_once '../models/Liaison.php';
+require_once './services/Connection.php';
+require_once './models/Liaison.php';
 
 class LiaisonService extends Connection {
   public function getAllLiaison() {

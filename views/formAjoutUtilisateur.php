@@ -13,6 +13,6 @@
       ?>
       <button type="submit">Ajouter</button>
     </form>
-    <p><a href="./accueil.php">Fermer</a></p>
+    <p><a href="./accueil.php<?=(isset($_GET['liste_groupe']))?'?liste_groupe='.$_GET['liste_groupe']:''?>">Fermer</a></p>
   </div>
 </div>

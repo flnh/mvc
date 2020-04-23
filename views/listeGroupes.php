@@ -2,6 +2,7 @@
 function afficherListeGroupesSelect(array $listeGroupes) {
   ?>
   <select name="liste_groupe" id="liste_groupe">
+  <option value="">Sélectionnez un groupe</option>
   <?php
   for ($i=0; $i < count($listeGroupes); $i++) {
     $selected = "";

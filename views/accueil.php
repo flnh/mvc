@@ -27,22 +27,22 @@
         </div>
     </div>
     <?php
-        if (isset($_GET['ajouter'])) {
-            require './formAjoutUtilisateur.php';
-        } else {
-            ?>
-            <div class="row">
-                <div class="col">
-                    <p><a href="<?=(!empty($_SERVER['QUERY_STRING']))?'?'.$_SERVER['QUERY_STRING'].'&':'?'?>ajouter=true">Ajouter un Musicien</a></p>
-                </div>
-            </div>
-            <?php
-        }
+    if (isset($_GET['ajouter'])) {
+        require './formAjoutUtilisateur.php';
+    } else {
+    ?>
+    <div class="row">
+        <div class="col">
+            <p><a href="<?=(!empty($_SERVER['QUERY_STRING']))?'?'.$_SERVER['QUERY_STRING'].'&':'?'?>ajouter=true">Ajouter un Musicien</a></p>
+        </div>
+    </div>
+    <?php
+    }
     ?>
     <?php
-        if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['liste_groupe'])) {
-            require '../controllers/ajoutUtilisateurController.php';
-        }
+    if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['liste_groupe'])) {
+        require '../controllers/ajoutUtilisateurController.php';
+    }
     ?>
 </body>
 </html>

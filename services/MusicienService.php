@@ -3,6 +3,34 @@ require_once '../services/connection.php';
 require_once '../models/Musicien.php';
 
 class MusicienService extends Connection {
+  public function getAllMusiciens() {
+    $requete = $this->bdd->query(
+      "SELECT 
+      lm.id_musicien as id, lm.nom_musicien as nom,lm.prenom_musicien as prenom, lg.nom_groupe as groupeCible,lglm.created as dateCreation
+      FROM 
+          liste_musiciens lm 
+      INNER JOIN
+          liste_groupes_avec_liste_musiciens lglm 
+      ON 
+          lm.id_musicien = lglm.musicien_id
+      INNER JOIN
+          liste_groupes lg 
+      ON 
+          lg.id_groupe = lglm.groupe_id
+      WHERE 
+          lglm.del = 0
+      "
+    );
+    if ($requete->rowCount() > 0) {
+      while ($donnees = $requete->fetch()) {
+        $listeMusiciens[] = new Musicien($donnees);
+      }
+      return $listeMusiciens;
+    } else {
+      return []; // Probleme requete
+    }
+  }
+
   public function getListeMusiciensGroupe($id) {
     $id = (int)$id;
     if ($id > 0) {
@@ -84,7 +112,7 @@ class MusicienService extends Connection {
         'nom' => htmlspecialchars($nom),
         'prenom' => htmlspecialchars($prenom)
       ]);
-      if (!$idNouveauMusicien) {
+      if ($idNouveauMusicien) {
         return $this->bdd->lastInsertId(); // id d'insertion
       } else {
         return 'Probleme lors de la creation du musicien';

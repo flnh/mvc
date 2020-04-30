@@ -5,6 +5,7 @@ class Musicien {
   private $_prenom;
   private $_groupeCible;
   private $_dateCreation;
+  private $_role;
 
   // public function __construct($nom, $prenom, $groupeCible) {
   //   $this->setNom($nom);
@@ -59,9 +60,7 @@ class Musicien {
     return $this->_groupeCible;
   }
   public function setGroupeCible($groupeCible) {
-    if (is_numeric($groupeCible)) {
-      $this->_groupeCible = (int) $groupeCible;
-    }
+    $this->_groupeCible = $groupeCible;
   }
 
   public function getDateCreation() {
@@ -69,6 +68,13 @@ class Musicien {
   }
   public function setDateCreation($value) {
     $this->_dateCreation = $value;
+  }
+
+  public function getRole() {
+    return $this->_role;
+  }
+  public function setRole($role) {
+    $this->_role = $role;
   }
 }
 ?>

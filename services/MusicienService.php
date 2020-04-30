@@ -6,7 +6,7 @@ class MusicienService extends Connection {
   public function getAllMusiciens() {
     $requete = $this->bdd->query(
       "SELECT 
-      lm.id_musicien as id, lm.nom_musicien as nom,lm.prenom_musicien as prenom, lg.nom_groupe as groupeCible,lglm.created as dateCreation
+      lm.id_musicien as id, lm.nom_musicien as nom,lm.prenom_musicien as prenom, lg.nom_groupe as groupeCible,lglm.created as dateCreation, r.nom_role as role
       FROM 
           liste_musiciens lm 
       INNER JOIN
@@ -17,6 +17,10 @@ class MusicienService extends Connection {
           liste_groupes lg 
       ON 
           lg.id_groupe = lglm.groupe_id
+      INNER JOIN
+      	  liste_roles r
+      ON
+      	  r.id_role = lglm.role_id
       WHERE 
           lglm.del = 0
       "
@@ -36,7 +40,7 @@ class MusicienService extends Connection {
     if ($id > 0) {
       $requete = $this->bdd->prepare(
         "SELECT 
-        lm.id_musicien as id, lm.nom_musicien as nom,lm.prenom_musicien as prenom, lg.nom_groupe as groupeCible,lglm.created as dateCreation
+        lm.id_musicien as id, lm.nom_musicien as nom,lm.prenom_musicien as prenom, lg.nom_groupe as groupeCible,lglm.created as dateCreation, r.nom_role as role
         FROM 
             liste_musiciens lm 
         INNER JOIN
@@ -47,6 +51,10 @@ class MusicienService extends Connection {
             liste_groupes lg 
         ON 
             lg.id_groupe = lglm.groupe_id
+        INNER JOIN
+      	    liste_roles r
+        ON
+      	    r.id_role = lglm.role_id
         WHERE 
             lg.id_groupe = :id
         AND 
@@ -76,7 +84,7 @@ class MusicienService extends Connection {
     if ($id > 0) {
       $requete = $this->bdd->prepare(
         "SELECT 
-        lm.id_musicien as id, lm.nom_musicien as nom,lm.prenom_musicien as prenom, lg.nom_groupe as groupeCible,lglm.created as dateCreation
+        lm.id_musicien as id, lm.nom_musicien as nom,lm.prenom_musicien as prenom, lg.nom_groupe as groupeCible,lglm.created as dateCreation, r.nom_role as role
         FROM 
             liste_musiciens lm 
         INNER JOIN
@@ -87,6 +95,10 @@ class MusicienService extends Connection {
             liste_groupes lg 
         ON 
             lg.id_groupe = lglm.groupe_id
+        INNER JOIN
+      	    liste_roles r
+        ON
+      	    r.id_role = lglm.role_id
         WHERE 
             lm.id_musicien = :id
         AND 

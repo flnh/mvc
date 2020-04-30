@@ -6,6 +6,7 @@ function afficherListeMusiciens($listeMusiciens) {
         <th>Nom</th>
         <th>Prenom</th>
         <th>Date de Creation</th>
+        <th>Role</th>
       </thead>
       <tbody>
         <?php 
@@ -15,6 +16,7 @@ function afficherListeMusiciens($listeMusiciens) {
             <td><?=$listeMusiciens[$i]->getNom()?></td>
             <td><?=$listeMusiciens[$i]->getPrenom()?></td>
             <td><?=$listeMusiciens[$i]->getDateCreation()?></td>
+            <td><?=$listeMusiciens[$i]->getRole()?></td>
           </tr>
           <?php
         }

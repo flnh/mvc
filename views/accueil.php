@@ -34,6 +34,7 @@
     <div class="row">
         <div class="col">
             <p><a href="<?=(!empty($_SERVER['QUERY_STRING']))?'?'.$_SERVER['QUERY_STRING'].'&':'?'?>ajouter=true">Ajouter un Musicien</a></p>
+            <p><a href="./formAjoutRole.php">Ajouter un Role</a></p>
         </div>
     </div>
     <?php

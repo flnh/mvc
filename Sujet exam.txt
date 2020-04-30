@@ -1,0 +1,10 @@
+Ajout des fonctionnalités du site web
+Donnez la possibilté d'ajouter un rôle à un musicien.
+L'ajout des rôles doit se faire depuis une page Web pour alimenter la DB.
+La liste des rôles doit être visible depuis la page de création d'un musicien.
+Le rôle des musiciens doit être visible quand l'utilisateur sélectionne un groupe dans la page d'acceuil du site.
+
+Règles:
+Il ne peut pas y avoir de doublons de rôle en DB.
+On doit pouvoir garder un historique des rôles de chaque musicien.
+

@@ -9,9 +9,21 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['liste_group
   $idGroupe = (int)$_POST['liste_groupe'];
   $role = (int)$_POST['role'];
 
-  $idNouveauMusicien = (new MusicienService())->createMusicien($nom, $prenom);
+  $musicien = new Musicien([
+    'nom' => $nom,
+    'prenom' => $prenom,
+    'groupeCible' => $idGroupe,
+    'role' => $role
+  ]);
+
+  $idNouveauMusicien = (new MusicienService())->createMusicien($musicien);
   if (is_numeric($idNouveauMusicien)) {
-    $idNouvelleLiaison = (new LiaisonService())->createLiaison($idNouveauMusicien, $idGroupe, $role);
+    $liaison = new Liaison([
+      'musicien_id' => $idNouveauMusicien,
+      'groupe_id' => $musicien->getGroupeCible(),
+      'role_id' => $musicien->getRole()
+    ]);
+    $idNouvelleLiaison = (new LiaisonService())->createLiaison($liaison);
     if (is_numeric($idNouvelleLiaison)) {
       afficherMessage('Le musicien a bien été ajouté');
     } else {

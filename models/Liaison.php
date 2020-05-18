@@ -6,6 +6,7 @@ class Liaison {
   private $_created;
   private $_updated;
   private $_del;
+  private $_roleId;
 
   public function __construct(array $donnees) {
     $this->hydrate($donnees);
@@ -71,6 +72,16 @@ class Liaison {
     $delete = (int)$delete;
     if ($delete === 0 || $delete === 1) {
       $this->_del = $delete;
+    }
+  }
+
+  public function getRoleId() {
+    return $this->_roleId;
+  }
+  public function setRole_id($id) {
+    $id = (int)$id;
+    if ($id > 0) {
+      $this->_roleId = $id;
     }
   }
 }

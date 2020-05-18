@@ -29,7 +29,7 @@ class Musicien {
   }
 
   public function getId() {
-    return $this->_prenom;
+    return $this->_id;
   }
   public function setId($id) {
     $id = (int)$id;

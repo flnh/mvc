@@ -35,8 +35,8 @@ class MusicienService extends Connection {
     }
   }
 
-  public function getListeMusiciensGroupe($id) {
-    $id = (int)$id;
+  public function getListeMusiciensGroupe(Groupe $groupe) {
+    $id = $groupe->getId_groupe();
     if ($id > 0) {
       $requete = $this->bdd->prepare(
         "SELECT 
@@ -117,12 +117,12 @@ class MusicienService extends Connection {
     }
   }
 
-  public function createMusicien($nom, $prenom) {
-    if (!empty($nom) && !empty($prenom) && !preg_match('~[0-9]~', $nom) && !preg_match('~[0-9]~', $prenom)) {
+  public function createMusicien(Musicien $musicien) {
+    if (!empty($musicien->getNom()) && !empty($musicien->getPrenom())) {
       $requete = $this->bdd->prepare('INSERT INTO liste_musiciens(nom_musicien, prenom_musicien) VALUES(:nom, :prenom)');
       $idNouveauMusicien = $requete->execute([
-        'nom' => htmlspecialchars($nom),
-        'prenom' => htmlspecialchars($prenom)
+        'nom' => $musicien->getNom(),
+        'prenom' => $musicien->getPrenom()
       ]);
       if ($idNouveauMusicien) {
         return $this->bdd->lastInsertId(); // id d'insertion

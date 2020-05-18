@@ -33,9 +33,10 @@ class RoleService extends Connection {
     }
   }
 
-  public function createRole($role) {
-    if (!empty($role)) {
-      $tabRequete = ['nomRole' => ucfirst(strtolower(htmlspecialchars($role)))]; // Formatage juste la premiere lettre majuscule
+  public function createRole(Role $role) {
+    if (!empty($role->getNom_role())) {
+      // $tabRequete = ['nomRole' => ucfirst(strtolower(htmlspecialchars($role)))]; // Formatage juste la premiere lettre majuscule
+      $tabRequete = ['nomRole' => $role->getNom_role()];
       $requete = $this->bdd->prepare('SELECT * FROM liste_roles WHERE nom_role = :nomRole');
       $requete->execute($tabRequete);
       if ($requete->rowCount() == 0) {

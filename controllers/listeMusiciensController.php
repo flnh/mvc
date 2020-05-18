@@ -4,7 +4,11 @@ if (isset($_GET['liste_groupe'])) {
   require_once '../services/MusicienService.php';
   require_once './listeMusiciens.php';
 
-  $listeMusiciens = (new MusicienService)->getListeMusiciensGroupe($_GET['liste_groupe']);
+  $groupe = new Groupe([
+    'id_groupe' => $_GET['liste_groupe']
+  ]);
+
+  $listeMusiciens = (new MusicienService)->getListeMusiciensGroupe($groupe);
   if (!empty($listeMusiciens)) {
     afficherListeMusiciens($listeMusiciens);
   }

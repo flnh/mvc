@@ -32,16 +32,13 @@ class LiaisonService extends Connection {
     }
   }
 
-  public function createLiaison($musicienId, $groupeId, $role) {
-    $musicienId = (int)$musicienId;
-    $groupeId = (int)$groupeId;
-    $role = (int)$role;
-    if ($musicienId > 0 && $groupeId > 0 && $role > 0) {
+  public function createLiaison(Liaison $liaison) {
+    if ($liaison->getMusicienId() > 0 && $liaison->getGroupeId() > 0 && $liaison->getRoleId() > 0) {
       $requete = $this->bdd->prepare('INSERT INTO liste_groupes_avec_liste_musiciens(musicien_id, groupe_id, role_id, created) VALUES(:musicienId, :groupeId, :roleId, :created)');
       $liaisonReussie = $requete->execute([
-        'musicienId' => $musicienId,
-        'groupeId' => $groupeId,
-        'roleId' => $role,
+        'musicienId' => $liaison->getMusicienId(),
+        'groupeId' => $liaison->getGroupeId(),
+        'roleId' => $liaison->getRoleId(),
         'created' => date('Y-m-d h:i:s')
       ]);
       if ($liaisonReussie) {

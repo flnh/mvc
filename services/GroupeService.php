@@ -13,8 +13,8 @@ class GroupeService extends Connection {
     return $tabGroupes;
   }
 
-  public function getGroupe($id) {
-    $id = (int)$id;
+  public function getGroupe(Groupe $groupe) {
+    $id = $groupe->getId_groupe();
     if ($id > 0) {
       $requete = $this->bdd->prepare('SELECT * FROM liste_groupes WHERE id_groupe = :id');
       $requete->execute([
@@ -31,11 +31,11 @@ class GroupeService extends Connection {
     }
   }
 
-  public function createGroupe($nomGroupe) {
-    if (!empty($nomGroupe)) {
+  public function createGroupe(Groupe $groupe) {
+    if (!empty($groupe->getNom_groupe())) {
       $requete = $this->bdd->prepare('INSERT INTO liste_groupes(nom_groupe) VALUES(:nomGroupe)');
       $resultat = $requete->execute([
-        'nomGroupe' => htmlspecialchars($nomGroupe)
+        'nomGroupe' => $groupe->getNom_groupe()
       ]);
       if ($resultat) {
         return 'ok';
@@ -47,12 +47,12 @@ class GroupeService extends Connection {
     }
   }
 
-  public function updateGroupe($id, $nomGroupe) {
-    $id = (int)$id;
+  public function updateGroupe(Groupe $groupe) {
+    $id = $groupe->getId_groupe();
     if (!empty($nomGroupe) && $id > 0) {
       $requete = $this->bdd->prepare('UPDATE liste_groupes SET nom_groupe = :nomGroupe WHERE id_groupe = :id');
       $requete->execute([
-        'nomGroupe' => $nomGroupe,
+        'nomGroupe' => $groupe->getNom_groupe(),
         'id' => $id
       ]);
       if ($requete->rowCount() != 0) {
@@ -65,8 +65,8 @@ class GroupeService extends Connection {
     }
   }
 
-  public function deleteGroupe($id) {
-    $id = (int)$id;
+  public function deleteGroupe(Groupe $groupe) {
+    $id = $groupe->getId_groupe();
     if ($id > 0) {
       $requete = $this->bdd->prepare('DELETE FROM liste_groupes WHERE id_groupe = :id');
       $requete->execute([

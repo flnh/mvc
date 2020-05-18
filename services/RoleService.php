@@ -15,8 +15,8 @@ class RoleService extends Connection {
     }
   }
 
-  public function getRole($id) {
-    $id = (int)$id;
+  public function getRole(Role $role) {
+    $id = $role->getId_role();
     if ($id > 0) {
       $requete = $this->bdd->prepare('SELECT * FROM liste_roles WHERE id_role = :id');
       $requete->execute(['id' => $id]);
@@ -55,12 +55,12 @@ class RoleService extends Connection {
     }
   }
 
-  public function updateRole($id, $role) {
-    $id = (int)$id;
-    if ($id > 0 && !empty($role)) {
+  public function updateRole(Role $role) {
+    $id = $role->getId_role();
+    if ($id > 0 && !empty($role->getNom_role())) {
       $requete = $this->bdd->prepare('UPDATE liste_roles SET nom_role = :nomRole WHERE id_role = :id');
       $requete->execute([
-        'nomRole' => ucfirst(strtolower(htmlspecialchars($role))),
+        'nomRole' => $role->getNom_role(),
         'id' => $id
       ]);
       if ($requete->rowCount() > 0) {
@@ -73,8 +73,8 @@ class RoleService extends Connection {
     }
   }
 
-  public function deleteRole($id) {
-    $id = (int)$id;
+  public function deleteRole(Role $role) {
+    $id = $role->getId_role();
     if ($id > 0) {
       $requete = $this->bdd->prepare('DELETE FROM liste_roles WHERE id_role = :id');
       $requete->execute([

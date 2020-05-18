@@ -79,8 +79,8 @@ class MusicienService extends Connection {
     }
   }
 
-  public function getMusicien($id) {
-    $id = (int)$id;
+  public function getMusicien(Musicien $musicien) {
+    $id = $musicien->getId();
     if ($id > 0) {
       $requete = $this->bdd->prepare(
         "SELECT 
@@ -134,13 +134,13 @@ class MusicienService extends Connection {
     }
   }
 
-  public function updateMusicien($id, $nom, $prenom) {
-    $id = (int)$id;
-    if (!empty($nom) && !empty($prenom) && !preg_match('~[0-9]~', $nom) && !preg_match('~[0-9]~', $prenom) && $id > 0) {
+  public function updateMusicien(Musicien $musicien) {
+    $id = $musicien->getId();
+    if (!empty($musicien->getNom()) && !empty($musicien->getPrenom()) && $id > 0) {
       $requete = $this->bdd->prepare('UPDATE liste_musiciens SET nom_musicien = :nom, prenom_musicien = :prenom WHERE id_musicien = :id');
       $requete->execute([
-        'nom' => htmlspecialchars($nom),
-        'prenom' => htmlspecialchars($prenom),
+        'nom' => $musicien->getNom(),
+        'prenom' => $musicien->getPrenom(),
         'id' => $id
       ]);
       if ($requete->rowCount() != 0) {
@@ -153,8 +153,8 @@ class MusicienService extends Connection {
     }
   }
 
-  public function deleteMusicien($id) {
-    $id = (int)$id;
+  public function deleteMusicien(Musicien $musicien) {
+    $id = $musicien->getId();
     if ($id > 0) {
       $requete = $this->bdd->prepare('DELETE FROM liste_musiciens WHERE id_musicien = :id');
       $requete->execute([

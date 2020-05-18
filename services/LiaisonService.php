@@ -15,8 +15,8 @@ class LiaisonService extends Connection {
     }
   }
 
-  public function getLiaison($id) {
-    $id = (int)$id;
+  public function getLiaison(Liaison $liaison) {
+    $id = $liaison->getIdJointure();
     if ($id > 0) {
       $requete = $this->bdd->prepare('SELECT * FROM liste_groupes_avec_liste_musiciens WHERE id_jointure = :id AND del = 0');
       $requete->execute([
@@ -51,10 +51,10 @@ class LiaisonService extends Connection {
     }
   }
 
-  public function updateLiaison($id, $musicienId, $groupeId) {
-    $id = (int)$id;
-    $musicienId = (int)$musicienId;
-    $groupeId = (int)$groupeId;
+  public function updateLiaison(Liaison $liaison) {
+    $id = $liaison->getIdJointure();
+    $musicienId = $liaison->getMusicienId();
+    $groupeId = $liaison->getGroupeId();
     if ($id > 0 && $musicienId > 0 && $groupeId > 0) {
       $requete = $this->bdd->prepare('UPDATE liste_groupes_avec_liste_musiciens SET musicien_id = :musicienId, groupe_id = :groupeId, updated = :updated WHERE id_jointure = :id');
       $requete->execute([
@@ -73,8 +73,8 @@ class LiaisonService extends Connection {
     }
   }
 
-  public function deleteLiaison($id) {
-    $id = (int)$id;
+  public function deleteLiaison(Liaison $liaison) {
+    $id = $liaison->getIdJointure();
     if ($id > 0) {
       $requete = $this->bdd->prepare('UPDATE liste_groupes_avec_liste_musiciens SET del = 1 WHERE id_jointure = :id');
       $requete->execute([
@@ -90,8 +90,8 @@ class LiaisonService extends Connection {
     }
   }
 
-  public function achtungTrueDeleteLiaison($id) {
-    $id = (int)$id;
+  public function achtungTrueDeleteLiaison(Liaison $liaison) {
+    $id = $liaison->getIdJointure();
     if ($id > 0) {
       $requete = $this->bdd->prepare('DELETE FROM liste_groupes_avec_liste_musiciens WHERE id_jointure = :id');
       $requete->execute([

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 14 mai 2020 à 09:03
+-- Généré le : ven. 22 mai 2020 à 13:38
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.5
 
@@ -66,7 +66,9 @@ INSERT INTO `liste_groupes_avec_liste_musiciens` (`id_jointure`, `musicien_id`, 
 (3, 3, 2, '2020-04-16 05:00:00', '0000-00-00 00:00:00', 0, 2),
 (4, 4, 2, '2020-04-21 05:00:00', '0000-00-00 00:00:00', 0, 3),
 (5, 3, 1, '2020-04-18 08:00:00', '0000-00-00 00:00:00', 0, 4),
-(6, 1, 2, '2020-04-13 03:28:00', '0000-00-00 00:00:00', 0, 1);
+(6, 1, 2, '2020-04-13 03:28:00', '0000-00-00 00:00:00', 0, 1),
+(7, 5, 1, '2020-05-18 01:12:03', '2020-05-18 13:12:03', 0, 5),
+(8, 6, 1, '2020-05-18 02:42:43', '2020-05-18 14:42:43', 0, 7);
 
 -- --------------------------------------------------------
 
@@ -88,7 +90,9 @@ INSERT INTO `liste_musiciens` (`id_musicien`, `nom_musicien`, `prenom_musicien`)
 (1, 'El rocker', 'Jérome'),
 (2, 'Cule', 'Jean'),
 (3, 'Dans Le Jardin', 'La Schtroumpfette'),
-(4, 'Dupond', 'Elize');
+(4, 'Dupond', 'Elize'),
+(5, 'test', 'test'),
+(6, 'teeeeest', 'rrrrr');
 
 -- --------------------------------------------------------
 
@@ -109,7 +113,10 @@ INSERT INTO `liste_roles` (`id_role`, `nom_role`) VALUES
 (1, 'Test'),
 (2, 'Batteur'),
 (3, 'Guitariste'),
-(4, 'Chanteur');
+(4, 'Chanteur'),
+(5, 'Aaa'),
+(6, 'Aaa2'),
+(7, 'Zzz');
 
 --
 -- Index pour les tables déchargées
@@ -153,19 +160,19 @@ ALTER TABLE `liste_groupes`
 -- AUTO_INCREMENT pour la table `liste_groupes_avec_liste_musiciens`
 --
 ALTER TABLE `liste_groupes_avec_liste_musiciens`
-  MODIFY `id_jointure` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_jointure` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `liste_musiciens`
 --
 ALTER TABLE `liste_musiciens`
-  MODIFY `id_musicien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_musicien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `liste_roles`
 --
 ALTER TABLE `liste_roles`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

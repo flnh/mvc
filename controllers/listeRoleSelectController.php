@@ -1,4 +1,5 @@
 <?php
+require_once '../controllers/controlConnectionController.php';
 require_once '../services/RoleService.php';
 require_once '../views/listeRoles.php';
 

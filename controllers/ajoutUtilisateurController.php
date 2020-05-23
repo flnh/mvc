@@ -1,4 +1,5 @@
 <?php
+require_once '../controllers/controlConnectionController.php';
 require_once '../services/MusicienService.php';
 require_once '../services/LiaisonService.php';
 require_once '../views/message.php';

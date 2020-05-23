@@ -7,6 +7,7 @@ class Liaison {
   private $_updated;
   private $_del;
   private $_roleId;
+  private $_utilisateur_id;
 
   public function __construct(array $donnees) {
     $this->hydrate($donnees);
@@ -83,6 +84,18 @@ class Liaison {
     if ($id > 0) {
       $this->_roleId = $id;
     }
+  }
+
+  public function getUtilisateur_id()
+  {
+    return $this->_utilisateur_id;
+  }
+
+  public function setUtilisateur_id($id)
+  {
+    $this->_utilisateur_id = $id;
+
+    return $this;
   }
 }
 ?>

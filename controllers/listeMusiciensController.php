@@ -1,4 +1,5 @@
 <?php
+require_once '../controllers/controlConnectionController.php';
 
 if (isset($_GET['liste_groupe'])) {
   require_once '../services/MusicienService.php';

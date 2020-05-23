@@ -1,3 +1,6 @@
+<?php
+require_once '../controllers/controlConnectionController.php';
+?>
 <div class="row">
   <div class="col">
     <h2>Ajout d'un musicien</h2>

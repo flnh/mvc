@@ -1,3 +1,6 @@
+<?php
+require_once '../controllers/controlConnectionController.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
